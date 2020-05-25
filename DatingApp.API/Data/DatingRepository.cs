@@ -156,5 +156,24 @@ namespace DatingApp.API.Data
 
             return messages;
         }
+
+
+
+        public async Task<Donation> GetDonation(int id)
+        {
+            return await _context.Donations.FirstOrDefaultAsync(m => m.DonationId == id);
+        }
+
+
+        public async Task<PagedList<Donation>> GetDonations(DonationParams donationParams)
+        {
+            var donations = _context.Donations.AsQueryable();
+
+            donations = donations.OrderByDescending(d => d.DonationId);
+
+            return await PagedList<Donation>.CreateAsync(donations, donationParams.PageNumber, donationParams.PageSize);
+        }
+
+      
     }
 }
