@@ -7,17 +7,23 @@ using System;
  using DatingApp.API.Dtos;
  using DatingApp.API.Helpers;
  using DatingApp.API.Models;
+
+
  using Microsoft.AspNetCore.Authorization;
  using Microsoft.AspNetCore.Mvc;
 
-  namespace DatingApp.API.Controllers
+
+namespace DatingApp.API.Controllers
  {
-     [ServiceFilter(typeof(LogUserActivity))]
-   //  [Authorize]
-     [Route("api/donations/[controller]")]
+    //[ServiceFilter(typeof(LogUserActivity))]
+  //  [Authorize]
+     [Route("api/[controller]")]
      [ApiController]
+
+
      public class DonationsController : ControllerBase
      {
+
          private readonly IDatingRepository _repo;
          private readonly IMapper _mapper;
          public DonationsController(IDatingRepository repo, IMapper mapper)
@@ -26,9 +32,16 @@ using System;
              _repo = repo;
          }
 
-          [HttpGet("{id}", Name = "GetDonation")]
-         public async Task<IActionResult> GetDonation( int id)
-         {
+        //[HttpGet("{id}", Name = "GetDonation")]
+        //public async Task<IActionResult> GetDonation(int id)
+        // [HttpGet("{id}", Name = "GetDonation")]
+
+
+       // https://localhost:44366/api/donations
+        public async Task<IActionResult> Get()
+        {
+
+           int id = 1;
              //if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
              //    return Unauthorized();
 
@@ -46,16 +59,10 @@ using System;
             //if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
             //    return Unauthorized();
 
-            //messageParams.UserId = userId;
+            var donationsFromRepo = await _repo.GetDonations(donationParams);
 
-            var messagesFromRepo = await _repo.GetDonations(donationParams);
+            return Ok(donationsFromRepo);
 
-            var messages = _mapper.Map<IEnumerable<MessageToReturnDto>>(messagesFromRepo);
-
-            Response.AddPagination(messagesFromRepo.CurrentPage, messagesFromRepo.PageSize,
-               messagesFromRepo.TotalCount, messagesFromRepo.TotalPages);
-
-            return Ok(messages);
         }
 
 

@@ -7,7 +7,10 @@ namespace DatingApp.API.Controllers
     {
         public IActionResult Index()
         {
-            return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "index.html"), "text/HTML");
+
+        //    PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "index.html");
+
+        return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "index.html"), "text/HTML");
         }
     }
 }

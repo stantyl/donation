@@ -43,10 +43,7 @@ namespace DatingApp.API.Data
               .OnDelete(DeleteBehavior.Restrict);
 
 
-            //builder.Entity<Donation>()
-            //    .OnDelete(DeleteBehavior.Restrict);
-            //  
-            // .WithMany(m => m.MessagesReceived)
+            builder.Entity<Donation>();
 
         }
     }
