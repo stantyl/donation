@@ -21,7 +21,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/donations",
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "http://localhost:46351",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
