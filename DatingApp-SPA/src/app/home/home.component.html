@@ -15,4 +15,15 @@
       </div>
     </div>
   </div>
+
+
+
+  <div *ngIf="registerMode" class="container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <app-donation (cancelRegister)="cancelRegisterMode($event)"></app-donation>
+      </div>
+    </div>
+  </div>
+
 </div>
