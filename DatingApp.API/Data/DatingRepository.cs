@@ -161,7 +161,7 @@ namespace DatingApp.API.Data
 
         public async Task<Donation> GetDonation(int id)
         {
-            return await _context.Donations.FirstOrDefaultAsync(m => m.DonationId == id);
+            return await _context.Donations.FirstOrDefaultAsync(m => m.Id == id);
         }
 
 
@@ -169,7 +169,7 @@ namespace DatingApp.API.Data
         {
             var donations = _context.Donations.AsQueryable();
 
-            donations = donations.OrderByDescending(d => d.DonationId);
+            donations = donations.OrderByDescending(d => d.Id);
 
             return await PagedList<Donation>.CreateAsync(donations, donationParams.PageNumber, donationParams.PageSize);
         }
