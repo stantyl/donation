@@ -67,24 +67,21 @@ namespace DatingApp.API.Controllers
 
 
 
-        // [HttpPost]
-        //public async Task<IActionResult> CreateDonation(int userId, DonationForCreationDto donationForCreationDto)
-        //{
+        [HttpPost]
+        public async Task<IActionResult> CreateDonation(int userId, DonationForCreationDto donationForCreationDto)
+        {
 
+            var donation = _mapper.Map<Donation>(donationForCreationDto);
 
-        //     var donation = _mapper.Map<Donation>(DonationForCreationDto);
+            _repo.Add(donation);
 
-        //     _repo.Add(donation);
+            if (await _repo.SaveAll())
+            {
+            }
 
-        //     if (await _repo.SaveAll())
-        //    {
-        //        var messageToReturn = _mapper.Map<MessageToReturnDto>(donation);
-        //        return CreatedAtRoute("GetMessage", 
-        //            new {userId, id = message.Id}, messageToReturn);
-        //    }
+            throw new Exception("Creating the donation failed on save");
+        }
 
-        //     throw new Exception("Creating the message failed on save");
-        //}
 
 
     }
