@@ -1,3 +1,4 @@
+import { Donation } from './../_models/donation';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -146,4 +147,13 @@ export class UserService {
       )
       .subscribe();
   }
+
+
+  addDonation(donation: Donation) {
+    return this.http.post(this.baseUrl + 'donations', donation);
+  }
+
+
+
+
 }

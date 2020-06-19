@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src\\app",
-    "\\src\\assets",
-    "\\src\\environments"
+    "\\src\\app\\messages",
+    "\\src\\app\\nav",
+    "\\src\\app\\register"
   ],
   "SelectedNode": "\\src",
   "PreviewInSolutionExplorer": false
